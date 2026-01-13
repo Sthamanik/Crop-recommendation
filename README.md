@@ -13,7 +13,7 @@ Predict the optimal crop from 22 possible crops using soil nutrients (N, P, K), 
 - **Samples**: ~2200 observations
 
 ## 🛠️ Tech Stack
-- Python 3.9+
+- Python 3.13.9
 - Scikit-learn
 - Pandas, NumPy
 - Matplotlib, Seaborn
