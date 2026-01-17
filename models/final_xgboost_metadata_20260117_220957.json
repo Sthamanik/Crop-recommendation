@@ -1,0 +1,65 @@
+{
+    "model_name": "XGBoost",
+    "timestamp": "20260117_220957",
+    "metrics": {
+        "accuracy": 0.996969696969697,
+        "f1_score": 0.9969663262210536,
+        "precision": 0.9971590909090909,
+        "recall": 0.996969696969697
+    },
+    "training_date": "2026-01-17 22:09:57",
+    "best_params": {
+        "subsample": 1.0,
+        "reg_lambda": 2,
+        "reg_alpha": 0.5,
+        "n_estimators": 500,
+        "min_child_weight": 1,
+        "max_depth": 7,
+        "learning_rate": 0.1,
+        "gamma": 0.5,
+        "colsample_bytree": 0.6
+    },
+    "cv_score": 0.9962566844919785,
+    "test_metrics": {
+        "accuracy": 0.996969696969697,
+        "f1_score": 0.9969663262210536,
+        "precision": 0.9971590909090909,
+        "recall": 0.996969696969697
+    },
+    "num_classes": 22,
+    "classes": [
+        "apple",
+        "banana",
+        "blackgram",
+        "chickpea",
+        "coconut",
+        "coffee",
+        "cotton",
+        "grapes",
+        "jute",
+        "kidneybeans",
+        "lentil",
+        "maize",
+        "mango",
+        "mothbeans",
+        "mungbean",
+        "muskmelon",
+        "orange",
+        "papaya",
+        "pigeonpeas",
+        "pomegranate",
+        "rice",
+        "watermelon"
+    ],
+    "feature_names": [
+        "N",
+        "P",
+        "K",
+        "temperature",
+        "humidity",
+        "ph",
+        "rainfall"
+    ],
+    "training_samples": 1870,
+    "test_samples": 330
+}
