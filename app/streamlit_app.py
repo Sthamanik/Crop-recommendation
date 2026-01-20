@@ -4,9 +4,12 @@ Streamlit Web Interface for Crop Recommendation System
 Run with:
     streamlit run app/streamlit_app.py
 """
-
+import os
 import sys
-sys.path.append('..')
+if os.path.exists('src'):
+    sys.path.append('src')
+elif os.path.exists('..'):
+    sys.path.append('..')
 
 import streamlit as st
 import pandas as pd
@@ -52,7 +55,30 @@ st.markdown("""
 # Load model
 @st.cache_resource
 def load_model():
-    return load_latest_model()
+    import glob
+    import os
+    
+    # Try multiple paths (for local and deployed)
+    possible_paths = [
+        '../models',  # Local
+        'models',     # Deployed
+        './models'    # Alternative
+    ]
+    
+    for models_dir in possible_paths:
+        try:
+            model_files = glob.glob(os.path.join(models_dir, 'final_*.pkl'))
+            if model_files:
+                latest_model = max(model_files, key=os.path.getctime)
+                scaler_path = os.path.join(models_dir, 'scaler.pkl')
+                encoder_path = os.path.join(models_dir, 'label_encoder.pkl')
+                
+                from src.models.predict import CropPredictor
+                return CropPredictor(latest_model, scaler_path, encoder_path)
+        except:
+            continue
+    
+    raise FileNotFoundError("Could not find model files")
 
 try:
     predictor = load_model()
