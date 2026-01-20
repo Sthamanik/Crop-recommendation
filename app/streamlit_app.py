@@ -13,7 +13,6 @@ elif os.path.exists('..'):
 
 import streamlit as st
 import pandas as pd
-from src.models.predict import load_latest_model
 
 # Page config
 st.set_page_config(
