@@ -4,16 +4,11 @@ Streamlit Web Interface for Crop Recommendation System
 Run with:
     streamlit run app/streamlit_app.py
 """
-import os
 import sys
-if os.path.exists('src'):
-    sys.path.append('src')
-elif os.path.exists('..'):
-    sys.path.append('..')
+sys.path.append('..')
 
 import streamlit as st
 import pandas as pd
-from src.models.predict import load_latest_model
 
 # Page config
 st.set_page_config(
