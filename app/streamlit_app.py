@@ -4,11 +4,15 @@ Streamlit Web Interface for Crop Recommendation System
 Run with:
     streamlit run app/streamlit_app.py
 """
+from pathlib import Path
 import sys
-sys.path.append('..')
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
 
 import streamlit as st
 import pandas as pd
+from src.models.predict import load_latest_model
 
 # Page config
 st.set_page_config(
@@ -50,30 +54,7 @@ st.markdown("""
 # Load model
 @st.cache_resource
 def load_model():
-    import glob
-    import os
-    
-    # Try multiple paths (for local and deployed)
-    possible_paths = [
-        '../models',  # Local
-        'models',     # Deployed
-        './models'    # Alternative
-    ]
-    
-    for models_dir in possible_paths:
-        try:
-            model_files = glob.glob(os.path.join(models_dir, 'final_*.pkl'))
-            if model_files:
-                latest_model = max(model_files, key=os.path.getctime)
-                scaler_path = os.path.join(models_dir, 'scaler.pkl')
-                encoder_path = os.path.join(models_dir, 'label_encoder.pkl')
-                
-                from src.models.predict import CropPredictor
-                return CropPredictor(latest_model, scaler_path, encoder_path)
-        except:
-            continue
-    
-    raise FileNotFoundError("Could not find model files")
+    return load_latest_model()
 
 try:
     predictor = load_model()
@@ -88,7 +69,7 @@ st.markdown("### Get AI-powered crop recommendations based on your soil and clim
 
 # Sidebar
 with st.sidebar:
-    st.image("https://via.placeholder.com/300x200.png?text=Agriculture+AI", use_container_width=True)
+    st.image("https://via.placeholder.com/300x200.png?text=Agriculture+AI", width='stretch')
     st.markdown("## About")
     st.info("""
     This system uses machine learning to recommend the most suitable crop 
@@ -173,7 +154,7 @@ if model_loaded:
         
         st.markdown("#### ")
         st.markdown("#### ")
-        predict_button = st.button("🔍 Get Recommendation", use_container_width=True)
+        predict_button = st.button("🔍 Get Recommendation", width='stretch')
     
     # Prediction
     if predict_button:
