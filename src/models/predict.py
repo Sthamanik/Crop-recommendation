@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 import joblib
 import os
+from pathlib import Path
 from typing import Dict, List, Union, Tuple, Optional
 
 
@@ -247,7 +248,7 @@ class CropPredictor:
         return info
 
 
-def load_latest_model(models_dir: str = '../models') -> CropPredictor:
+def load_latest_model(models_dir: str | None = None) -> CropPredictor:
     """
     Load the most recently saved model.
     
@@ -259,8 +260,17 @@ def load_latest_model(models_dir: str = '../models') -> CropPredictor:
     """
     import glob
     
-    # Find latest model file
-    model_files = glob.glob(os.path.join(models_dir, 'final_*.pkl'))
+    # Resolve project root safely
+    BASE_DIR = Path(__file__).resolve().parent        # src/models
+    PROJECT_ROOT = BASE_DIR.parent.parent             # project_root
+
+    if models_dir is None:
+        models_dir = PROJECT_ROOT / "models"
+    else:
+        models_dir = Path(models_dir).resolve()
+
+    # Find model files
+    model_files = list(models_dir.glob("final_*.pkl"))
     
     if not model_files:
         raise FileNotFoundError(f"No model files found in {models_dir}")

@@ -1,30 +1,33 @@
-# Data
-data/raw/
-data/processed/
+# Data files
+data/raw/*.csv
+data/processed/*.csv
 *.csv
 
 # Python
-*.pyc
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
 
 # Jupyter
-.ipynb_checkpoints/
+.ipynb_checkpoints
+*.ipynb_checkpoints
 
-# Models
-models/*.pkl
-models/*.joblib
-
-# Environment
+# Environments
 venv/
 env/
 .env
+*.conda
 
 # IDEs
 .vscode/
-.idea/
+*.swp
+*.swo
 
 # OS
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
