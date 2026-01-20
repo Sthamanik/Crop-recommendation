@@ -274,6 +274,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Inspired by precision agriculture initiatives
 - Thanks to the open-source ML community
 
+## Deployed App
+- Using streamlit: Link to app - https://stham-crop-recommendation.streamlit.app/
 ---
 
 ⭐ **Star this repo** if you find it helpful!
