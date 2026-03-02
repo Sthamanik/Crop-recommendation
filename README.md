@@ -266,8 +266,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Your Name**
 - GitHub: [Sthamanik](https://github.com/Sthamanik)
 - LinkedIn: [Manik Kumar Shrestha](https://www.linkedin.com/in/manik-kumar-shrestha-b9b1b0276/)
-- Email: your.email@example.com
-
+- Email: shresthamanik1820@gmail.com
 ## 🙏 Acknowledgments
 
 - Dataset from [Kaggle](https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset)
